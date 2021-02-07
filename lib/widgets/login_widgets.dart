@@ -45,13 +45,29 @@ class LoginWidgets {
     );
   }
 
-  Widget inputPassword({String label, String hintText}) {
+  Widget inputPassword({String label, String hintText, Function iconView, bool isVisible}) {
+
+    _iconView(){
+      return IconButton(
+            icon: Icon(Icons.remove_red_eye),
+            onPressed: iconView,
+          );
+    }
+
+    _iconNotView(){
+      return IconButton(
+            icon: Icon(Icons.visibility_off),
+            onPressed: iconView,
+          );
+    }
+
     return TextField(
+      obscureText: isVisible,
       decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
           labelText: label,
           hintText: hintText,
-          suffixIcon: Icon(Icons.remove_red_eye)),
+          suffixIcon: isVisible ? _iconView() : _iconNotView()),
     );
   }
 

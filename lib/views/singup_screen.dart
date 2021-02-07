@@ -23,7 +23,7 @@ class SingUp extends StatelessWidget with SingUpWidgets {
                 SizedBox(
                   height: size.height * 0.02,
                 ),
-                titleIntro(text: 'Cadastrar'),
+                titleIntro(text: 'Cadastro'),
                 SizedBox(
                   height: size.height * 0.02,
                 ),
