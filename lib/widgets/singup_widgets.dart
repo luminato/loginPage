@@ -50,43 +50,83 @@ class SingUpWidgets {
   }
 
   Widget inputName({String label, String hintText}) {
-    return TextField(
+    return TextFormField(
       decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
           labelText: label,
           hintText: hintText),
+          validator: (value) {
+                  bool isEmpty = value.trim().isEmpty;
+                  bool isInvalid = value.trim().length < 3;
+
+                  if (isEmpty || isInvalid) {
+                    return 'Informe um nome válido';
+                  }
+
+                  return null;
+                },
     );
   }
 
   Widget inputEmail({String label, String hintText}) {
-    return TextField(
+    return TextFormField(
       decoration: InputDecoration(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
         labelText: label,
         hintText: hintText,
       ),
+      validator: (value) {
+                  bool isEmpty = value.trim().isEmpty;
+                  bool isInvalid = value.contains('@');
+
+                  if (isEmpty || !isInvalid) {
+                    return 'Informe um E-mail válido';
+                  }
+
+                  return null;
+                },
     );
   }
 
   Widget inputPassword({String label, String hintText}) {
-    return TextField(
+    return TextFormField(
       obscureText: true,
       decoration: InputDecoration(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
         labelText: label,
         hintText: hintText,
       ),
+      validator: (value) {
+                  bool isEmpty = value.trim().isEmpty;
+                  bool isInvalid = value.trim().length < 6;
+
+                  if (isEmpty || isInvalid) {
+                    return 'Informe uma senha com mais de 6 caracteres';
+                  }
+
+                  return null;
+                },
     );
   }
 
   Widget confirmPassword({String label, String hintText}) {
-    return TextField(
+    return TextFormField(
       obscureText: true,
       decoration: InputDecoration(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
         labelText: label,
         hintText: hintText,
       ),
+      validator: (value) {
+                  bool isEmpty = value.trim().isEmpty;
+                  bool isInvalid = value.trim().length < 6;
+
+                  if (isEmpty || isInvalid) {
+                    return 'As senhas não conferem.';
+                  }
+
+                  return null;
+                },
     );
   }
 
